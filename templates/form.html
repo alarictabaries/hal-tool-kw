@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>HAL : outil mots-clés</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 612px;
+        }
+        @media screen and (max-width:800px) {
+          .container {
+            width: calc(100% - 128px);
+          }
+        }
+    </style>
+</head>
+<body class="bg-blue-100 flex items-center justify-center">
+<div class="flex flex-col mt-12 mb-12 bg-white p-8 rounded shadow container">
+    <h1 class="text-lg mb-2 text-gray-900">Outil de renseignement de mots-clés pour des documents HAL</h1>
+    <hr>
+    <div class="mt-4">
+        <p class="text-gray-800 text-sm mb-4 text-justify">Cet outil sert à référencer des phrases-clés extraites d'un document HAL possédant un résumé (anglais ou français) par un lecteur afin de déterminer le meilleur modèle d'extraction automatisé par discipline scientifique.</p>
+        <form action="http://localhost:5000/save" method="post">
+            <div>
+                <label class="font-semibold">HAL ID* :</label>
+                <p class="pt-2 pb-2 text-sm italic text-gray-800">Le HAL ID d'un document correspond à la chaîne de caractère après le dernier / dans l'URL, exemple : https://hal.archives-ouvertes.fr/<font class="font-semibold text-blue-700">hal-02486603v1</font>.</p>
+            </div>
+            <div class="mb-2">
+                <input class="text-sm border px-2 py-1 rounded w-full" type="text" required placeholder="hal-02486603v1" name="hal_id" />
+            </div>
+            <div class="mt-4">
+                <label class="font-semibold">Mots-clés</label>
+                <p class="pt-2 pb-2 text-sm italic text-gray-800">Vous pouvez renseigner entre 3 et 5 mots-clés.</p>
+            </div>
+            <div class="flex flex-col">
+                <input class="text-sm border px-2 py-1 rounded mb-2" required type="text" placeholder="Mot-clé #1*" name="keyp1" />
+                <input class="text-sm border px-2 py-1 rounded mb-2" required type="text" placeholder="Mot-clé #2*" name="keyp2" />
+                <input class="text-sm border px-2 py-1 rounded mb-2" required type="text" placeholder="Mot-clé #3*" name="keyp3" />
+                <input class="text-sm border px-2 py-1 rounded mb-2" type="text" placeholder="Mot-clé #4" name="keyp4" />
+                <input class="text-sm border px-2 py-1 rounded" type="text" placeholder="Mot-clé #5" name="keyp5" />
+            </div>
+            <div class="mt-4">
+                <label class="font-semibold">Adresse mèl :</label>
+                <p class="pt-2 pb-2 text-sm italic text-gray-800">Si vous souhaitez recevoir les résultats de cette étude.</p>
+                <input class="text-sm border px-2 py-1 rounded w-full" type="text" placeholder="nom.prenom@univ-tln.fr" name="email" />
+            </div>
+            <input class="bg-blue-600 px-2 py-1 text-white rounded mt-4" type="submit" value="Envoyer"/>
+            <div class="mt-4 italic text-sm text-gray-800">
+                Les champs marqués d'une * sont obligatoires.
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
